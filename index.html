@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pasapalabra</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1 id="titulo">Pasapalabra</h1>
+    <button type="button" id="btn-sonido" class="btn-sonido" aria-pressed="true">🔊 Sonido: sí</button>
+  </header>
+
+  <main class="juego">
+    <!-- El rosco: las letras se crean desde juego.js -->
+    <section class="zona-rosco" aria-label="Rosco">
+      <div class="rosco" id="rosco">
+        <div class="centro">
+          <div class="tiempo" id="tiempo">150</div>
+          <div class="marcador" aria-live="off">
+            <span class="m-ok" title="Aciertos">✔ <b id="aciertos">0</b></span>
+            <span class="m-mal" title="Errores">✘ <b id="errores">0</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <!-- Pantalla de inicio -->
+      <div id="pantalla-inicio" class="pantalla">
+        <h2>¿Listo para el rosco?</h2>
+        <p id="texto-inicio" class="ayuda"></p>
+        <button type="button" id="btn-jugar" class="btn btn-principal">Jugar</button>
+      </div>
+
+      <!-- Pantalla de juego -->
+      <div id="pantalla-juego" class="pantalla" hidden>
+        <p class="tipo" id="tipo"></p>
+        <p class="pregunta" id="pregunta"></p>
+        <form id="formulario" autocomplete="off">
+          <label for="respuesta" class="solo-lectores">Tu respuesta</label>
+          <input id="respuesta" type="text" placeholder="Escribí tu respuesta"
+                 autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+          <div class="botones">
+            <button type="submit" class="btn btn-principal">Responder</button>
+            <button type="button" id="btn-pasar" class="btn btn-secundario">Pasapalabra</button>
+          </div>
+        </form>
+        <p id="aviso" class="aviso" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Pantalla final -->
+      <div id="pantalla-fin" class="pantalla" hidden>
+        <h2 id="fin-titulo"></h2>
+        <p id="fin-resumen" class="ayuda"></p>
+        <ul id="fin-lista" class="lista-final"></ul>
+        <button type="button" id="btn-reiniciar" class="btn btn-principal">Jugar de nuevo</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Primero las preguntas, después la lógica del juego -->
+  <script src="preguntas.js"></script>
+  <script src="juego.js"></script>
+</body>
+</html>
